@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Kürten Hotelaria &amp; Restaurante · Cândido de Abreu – PR</title>
-<meta name="description" content="Hotel e restaurante em Cândido de Abreu – PR. Quartos aconchegantes, mesa farta e atendimento de perto. Reserve pelo WhatsApp.">
+<title>Kürten Hotelaria &amp; Restaurante · Cândido de Abreu, PR</title>
+<meta name="description" content="Hotel e restaurante em Cândido de Abreu, PR. Quartos aconchegantes, mesa farta e atendimento de perto. Reserve pelo WhatsApp.">
 <link rel="icon" type="image/jpeg" href="src/img/logohotel.jpeg">
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -12,7 +12,6 @@
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,500&family=Work+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 
 <style>
-  /* ============ DESIGN TOKENS ============ */
   :root{
     --ink:#18140f;
     --ink-soft:#2a241c;
@@ -89,7 +88,6 @@
   section{padding:88px 0;}
   @media (max-width:720px){ section{padding:64px 0;} }
 
-  /* ============ BUTTONS ============ */
   .btn{
     display:inline-flex;
     align-items:center;
@@ -104,14 +102,14 @@
     border-radius:var(--radius);
     border:1px solid transparent;
     cursor:pointer;
-    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease;
+    transition:transform .25s ease, background .25s ease, color .25s ease, border-color .25s ease, box-shadow .25s ease;
     white-space:nowrap;
   }
   .btn-gold{
     background:var(--gold);
     color:var(--ink);
   }
-  .btn-gold:hover{background:var(--gold-light); transform:translateY(-2px);}
+  .btn-gold:hover{background:var(--gold-light); transform:translateY(-2px); box-shadow:0 14px 30px -14px rgba(180,144,61,0.55);}
   .btn-outline{
     background:transparent;
     color:var(--paper);
@@ -126,10 +124,8 @@
   .btn-outline-dark:hover{border-color:var(--ink); transform:translateY(-2px);}
   .btn-block{width:100%;}
 
-  /* ============ WHEAT ICON ============ */
   .wheat{color:var(--gold);}
 
-  /* ============ HEADER / NAV ============ */
   .site-header{
     position:fixed;
     top:0; left:0; right:0;
@@ -247,39 +243,85 @@
     position:relative;
     min-height:100svh;
     display:flex;
-    align-items:flex-end;
+    align-items:center;
     color:var(--paper);
     overflow:hidden;
+    padding-top:96px;
+    background:
+      radial-gradient(1100px 620px at 12% -8%, rgba(180,144,61,0.30), transparent 60%),
+      radial-gradient(900px 700px at 108% 8%, rgba(51,63,43,0.55), transparent 62%),
+      linear-gradient(160deg, #100d09 0%, #18140f 38%, #241d13 68%, #1c2016 100%);
+  }
+  .hero .container{
+    position:relative; z-index:2;
+    display:grid;
+    grid-template-columns:1fr;
+    gap:48px;
+    align-items:center;
+    width:100%;
+  }
+  @media (min-width:980px){
+    .hero .container{grid-template-columns:1.15fr 0.85fr;}
   }
   .hero-bg{
     position:absolute; inset:0;
-    background-image:linear-gradient(180deg, rgba(17,14,10,0.35) 0%, rgba(17,14,10,0.55) 55%, rgba(17,14,10,0.92) 100%), url("src/img/corredorquartos.jpeg");
-    background-size:cover;
-    background-position:center;
-    filter:saturate(0.92) contrast(1.02);
+    background-image:
+      repeating-linear-gradient(115deg, rgba(245,239,226,0.035) 0px, rgba(245,239,226,0.035) 1px, transparent 1px, transparent 64px),
+      radial-gradient(700px 480px at 82% 78%, rgba(227,199,126,0.14), transparent 70%);
+  }
+  .hero-wheat-field{
+    position:absolute; inset:0; z-index:1;
+    opacity:0.5;
+    color:rgba(227,199,126,0.5);
+  }
+  .hero-wheat-field svg{position:absolute; animation:swayWheat 7s ease-in-out infinite;}
+  .hero-wheat-field svg:nth-child(1){width:34px; height:58px; left:6%; bottom:6%; animation-delay:-1.2s;}
+  .hero-wheat-field svg:nth-child(2){width:24px; height:42px; left:11%; bottom:4%; animation-delay:-3.4s;}
+  .hero-wheat-field svg:nth-child(3){width:44px; height:76px; right:9%; bottom:9%; animation-delay:-0.6s;}
+  .hero-wheat-field svg:nth-child(4){width:26px; height:46px; right:15%; bottom:5%; animation-delay:-2.1s;}
+  @keyframes swayWheat{
+    0%,100%{transform:rotate(-3deg);}
+    50%{transform:rotate(3deg);}
   }
   .hero-content{
     position:relative;
     z-index:2;
-    padding-bottom:96px;
-    max-width:760px;
+    max-width:640px;
+    padding-bottom:56px;
+  }
+  .hero .eyebrow{
+    opacity:0; transform:translateY(14px);
+    animation:heroRise .8s ease forwards;
+    animation-delay:.1s;
   }
   .hero h1{
     color:var(--paper);
     font-size:clamp(2.2rem, 5.6vw, 3.8rem);
     margin-top:18px;
+    opacity:0; transform:translateY(18px);
+    animation:heroRise .9s ease forwards;
+    animation-delay:.25s;
   }
   .hero p{
     margin-top:20px;
     font-size:1.08rem;
     color:rgba(245,239,226,0.86);
     max-width:52ch;
+    opacity:0; transform:translateY(18px);
+    animation:heroRise .9s ease forwards;
+    animation-delay:.4s;
   }
   .hero-actions{
     margin-top:34px;
     display:flex;
     flex-wrap:wrap;
     gap:16px;
+    opacity:0; transform:translateY(18px);
+    animation:heroRise .9s ease forwards;
+    animation-delay:.55s;
+  }
+  @keyframes heroRise{
+    to{opacity:1; transform:none;}
   }
   .hero-strip{
     position:relative; z-index:2;
@@ -291,8 +333,55 @@
     border-top:1px solid rgba(245,239,226,0.22);
     font-size:0.86rem;
     color:rgba(245,239,226,0.78);
+    opacity:0; transform:translateY(18px);
+    animation:heroRise .9s ease forwards;
+    animation-delay:.7s;
   }
   .hero-strip strong{color:var(--paper); font-family:var(--ff-display); font-weight:600; display:block; font-size:0.95rem;}
+  .hero-visual{
+    position:relative;
+    z-index:2;
+    opacity:0; transform:translateY(18px) scale(.98);
+    animation:heroRise .9s ease forwards;
+    animation-delay:.5s;
+  }
+  .hero-visual .frame{
+    position:relative;
+    border:1px solid rgba(245,239,226,0.18);
+    padding:10px;
+    background:rgba(245,239,226,0.04);
+    box-shadow:0 40px 80px -30px rgba(0,0,0,0.7);
+  }
+  .hero-visual img{
+    width:100%; height:420px; object-fit:cover;
+    display:block;
+  }
+  .hero-visual .frame-tag{
+    position:absolute; left:-14px; bottom:-14px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:var(--ff-display);
+    font-weight:600;
+    font-size:0.88rem;
+    padding:12px 18px;
+    box-shadow:0 20px 40px -18px rgba(0,0,0,0.6);
+  }
+  .hero-visual .frame-stat{
+    position:absolute; right:-14px; top:-14px;
+    background:var(--ink);
+    border:1px solid rgba(245,239,226,0.2);
+    color:var(--paper);
+    padding:12px 16px;
+    font-size:0.76rem;
+    letter-spacing:0.06em;
+    text-transform:uppercase;
+    display:flex; align-items:center; gap:8px;
+  }
+  .hero-visual .frame-stat .wheat{width:12px; height:19px;}
+  @media (max-width:720px){
+    .hero-visual{order:-1;}
+    .hero-visual img{height:280px;}
+  }
   .scroll-cue{
     position:absolute; bottom:26px; right:24px; z-index:2;
     writing-mode:vertical-rl;
@@ -300,12 +389,30 @@
     font-size:0.72rem; letter-spacing:0.2em; text-transform:uppercase;
     display:flex; align-items:center; gap:10px;
   }
-  .scroll-cue::after{content:""; width:1px; height:46px; background:rgba(245,239,226,0.5); display:block;}
+  .scroll-cue::after{content:""; width:1px; height:46px; background:rgba(245,239,226,0.5); display:block; animation:cuePulse 2.2s ease-in-out infinite;}
+  @keyframes cuePulse{0%,100%{opacity:0.35;} 50%{opacity:1;}}
   @media (max-width:720px){ .scroll-cue{display:none;} }
 
   /* ============ REVEAL ============ */
   .reveal{opacity:0; transform:translateY(26px); transition:opacity .7s ease, transform .7s ease;}
   .reveal.in{opacity:1; transform:none;}
+  .reveal-stagger.in > *{opacity:1; transform:none;}
+  .reveal-stagger > *{
+    opacity:0; transform:translateY(22px);
+    transition:opacity .6s ease, transform .6s ease;
+  }
+  .reveal-stagger.in > *:nth-child(1){transition-delay:.05s;}
+  .reveal-stagger.in > *:nth-child(2){transition-delay:.14s;}
+  .reveal-stagger.in > *:nth-child(3){transition-delay:.23s;}
+  .reveal-stagger.in > *:nth-child(4){transition-delay:.32s;}
+  .reveal-stagger.in > *:nth-child(5){transition-delay:.41s;}
+  .reveal-stagger.in > *:nth-child(6){transition-delay:.5s;}
+  .reveal-stagger.in > *:nth-child(7){transition-delay:.59s;}
+  .reveal-stagger.in > *:nth-child(8){transition-delay:.68s;}
+  .reveal-stagger.in > *:nth-child(9){transition-delay:.77s;}
+  .reveal-stagger.in > *:nth-child(10){transition-delay:.86s;}
+  .reveal-stagger.in > *:nth-child(11){transition-delay:.95s;}
+  .reveal-stagger.in > *:nth-child(12){transition-delay:1.04s;}
 
   /* ============ ABOUT ============ */
   .about{background:var(--cream);}
@@ -323,7 +430,9 @@
   .about-features li{
     display:flex; gap:14px; align-items:flex-start;
     font-size:0.94rem; font-weight:500;
+    transition:transform .25s ease;
   }
+  .about-features li:hover{transform:translateX(6px);}
   .about-features .wheat{flex-shrink:0; width:16px; height:26px; margin-top:2px;}
   .about-media{
     position:relative;
@@ -331,7 +440,9 @@
   .about-media img{
     width:100%; height:420px; object-fit:cover;
     box-shadow:var(--shadow);
+    transition:transform .6s ease;
   }
+  .about-media:hover img{transform:scale(1.02);}
   .about-media .badge{
     position:absolute; left:-18px; bottom:-18px;
     background:var(--ink);
@@ -361,7 +472,9 @@
     border:1px solid var(--line);
     display:flex; flex-direction:column;
     overflow:hidden;
+    transition:transform .35s ease, box-shadow .35s ease;
   }
+  .tier-card:hover{transform:translateY(-6px); box-shadow:var(--shadow);}
   .tier-card .tier-media{height:260px; overflow:hidden;}
   .tier-card .tier-media img{width:100%; height:100%; object-fit:cover; transition:transform .6s ease;}
   .tier-card:hover .tier-media img{transform:scale(1.05);}
@@ -414,9 +527,13 @@
     display:none;
     align-items:center; justify-content:center;
     padding:24px;
+    opacity:0;
+    transition:opacity .25s ease;
   }
   .lightbox.open{display:flex;}
-  .lightbox img{max-width:min(900px,92vw); max-height:82vh; object-fit:contain; box-shadow:0 30px 80px rgba(0,0,0,0.6);}
+  .lightbox.show{opacity:1;}
+  .lightbox img{max-width:min(900px,92vw); max-height:82vh; object-fit:contain; box-shadow:0 30px 80px rgba(0,0,0,0.6); transform:scale(.96); transition:transform .25s ease;}
+  .lightbox.show img{transform:scale(1);}
   .lightbox-close{
     position:absolute; top:22px; right:26px;
     background:none; border:none; color:var(--cream);
@@ -427,14 +544,57 @@
   .gastronomy{
     position:relative;
     color:var(--paper);
-    background-image:linear-gradient(100deg, rgba(24,20,15,0.94) 32%, rgba(24,20,15,0.62) 100%), url("src/img/imagem1.jpeg");
-    background-size:cover;
-    background-position:center 78%;
+    overflow:hidden;
+    background:
+      radial-gradient(900px 560px at 88% 20%, rgba(180,144,61,0.22), transparent 60%),
+      radial-gradient(700px 500px at 10% 100%, rgba(51,63,43,0.5), transparent 65%),
+      linear-gradient(120deg, #18140f 45%, #241d13 100%);
   }
-  .gastronomy .container{max-width:600px;}
+  .gastronomy .container{
+    max-width:1180px;
+    display:grid;
+    gap:48px;
+    grid-template-columns:1fr;
+    align-items:center;
+  }
+  @media (min-width:900px){ .gastronomy .container{grid-template-columns:1.05fr 0.95fr;} }
+  .gastronomy-copy{max-width:560px;}
   .gastronomy h2{color:var(--paper); font-size:clamp(1.7rem,3.6vw,2.5rem); margin-top:14px;}
   .gastronomy p{margin-top:18px; color:rgba(245,239,226,0.85); font-size:1.02rem;}
   .gastronomy .btn{margin-top:30px;}
+  .gastronomy-media{position:relative;}
+  .gastronomy-mosaic{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    grid-template-rows:auto auto;
+    gap:12px;
+  }
+  .gastronomy-mosaic button:nth-child(1){grid-column:1/3;}
+  .gastronomy-mosaic button{
+    all:unset;
+    cursor:zoom-in;
+    display:block; overflow:hidden;
+    box-shadow:0 30px 60px -24px rgba(0,0,0,0.65);
+    border:1px solid rgba(245,239,226,0.14);
+  }
+  .gastronomy-mosaic img{
+    width:100%; height:190px; object-fit:cover;
+    display:block;
+    transition:transform .6s ease;
+  }
+  .gastronomy-mosaic button:nth-child(1) img{height:220px;}
+  .gastronomy-mosaic button:hover img{transform:scale(1.06);}
+  .gastronomy-media .tag{
+    position:absolute; left:-16px; top:-16px;
+    background:var(--gold);
+    color:var(--ink);
+    font-family:var(--ff-display);
+    font-weight:600;
+    font-size:0.9rem;
+    padding:12px 18px;
+    box-shadow:var(--shadow);
+    z-index:1;
+  }
 
   /* ============ INSTALACOES ============ */
   .facilities{background:var(--cream-deep);}
@@ -444,17 +604,47 @@
   }
   @media (min-width:760px){
     .facility-grid{grid-template-columns:1.3fr 1fr 1fr; grid-template-rows:auto auto;}
-    .facility-grid img:nth-child(1){grid-row:1 / 3;}
+    .facility-grid a:nth-child(1){grid-row:1 / 3;}
   }
-  .facility-grid img{width:100%; height:100%; min-height:180px; object-fit:cover; box-shadow:var(--shadow);}
+  .facility-grid a{display:block; overflow:hidden; box-shadow:var(--shadow); height:100%; min-height:180px;}
+  .facility-grid a img{width:100%; height:100%; min-height:180px; object-fit:cover; transition:transform .5s ease;}
+  .facility-grid a:hover img{transform:scale(1.06);}
+  .facility-detail{
+    position:relative;
+    background:var(--ink);
+    display:flex; align-items:center; justify-content:center;
+    padding:22px;
+    overflow:hidden;
+    box-shadow:var(--shadow);
+    min-height:180px;
+  }
+  .facility-detail img{position:absolute; inset:0; width:100%; height:100%; object-fit:cover; opacity:0.9; transition:transform .5s ease;}
+  .facility-detail:hover img{transform:scale(1.06);}
+  .facility-detail .detail-caption{
+    position:relative; z-index:1;
+    color:var(--paper);
+    font-family:var(--ff-display);
+    text-align:center;
+    font-size:1rem;
+    background:rgba(24,20,15,0.55);
+    padding:10px 16px;
+  }
 
   /* ============ PARCERIAS ============ */
   .partners{
     background:var(--green);
     color:var(--cream);
     text-align:center;
+    position:relative;
+    overflow:hidden;
   }
-  .partners .container{max-width:680px; display:flex; flex-direction:column; align-items:center;}
+  .partners::before{
+    content:"";
+    position:absolute; inset:0;
+    background:radial-gradient(700px 400px at 50% 0%, rgba(227,199,126,0.16), transparent 70%);
+    pointer-events:none;
+  }
+  .partners .container{max-width:680px; display:flex; flex-direction:column; align-items:center; position:relative;}
   .partners .eyebrow{justify-content:center;}
   .partners h2{color:var(--paper); margin-top:14px;}
   .partners p{margin-top:16px; color:rgba(245,239,226,0.85);}
@@ -540,14 +730,13 @@
   .footer-brand .brand-name{color:var(--paper);}
   .footer-col h4{color:var(--paper); font-size:0.82rem; letter-spacing:0.1em; text-transform:uppercase; margin-bottom:16px; font-family:var(--ff-body); font-weight:600;}
   .footer-col ul{list-style:none; margin:0; padding:0; display:grid; gap:10px; font-size:0.92rem;}
-  .footer-col a{text-decoration:none; color:inherit;}
+  .footer-col a{text-decoration:none; color:inherit; transition:color .2s ease;}
   .footer-col a:hover{color:var(--gold-light);}
   .footer-bottom{
     display:flex; flex-wrap:wrap; justify-content:space-between; gap:12px;
     padding-top:22px; font-size:0.8rem; color:rgba(245,239,226,0.45);
   }
 
-  /* Focus visibility */
   a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible{
     outline:2px solid var(--gold-light);
     outline-offset:3px;
@@ -556,7 +745,6 @@
 </head>
 <body>
 
-<!-- SVG SPRITE -->
 <svg width="0" height="0" style="position:absolute" aria-hidden="true">
   <symbol id="icon-wheat" viewBox="0 0 24 40">
     <g fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round">
@@ -573,7 +761,6 @@
   </symbol>
 </svg>
 
-<!-- HEADER -->
 <header class="site-header" id="siteHeader">
   <div class="container">
     <a href="#top" class="brand">
@@ -605,34 +792,47 @@
   <a class="btn btn-gold" href="#reserva">Reservar</a>
 </div>
 
-<!-- HERO -->
 <section class="hero" id="top">
   <div class="hero-bg"></div>
-  <div class="container hero-content">
-    <p class="eyebrow on-dark"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Hotel &amp; Restaurante · Cândido de Abreu — PR</p>
-    <h1>Descanso de verdade para quem está de passagem.</h1>
-    <p>Quartos aconchegantes, mesa farta todos os dias e atendimento de perto — bem na entrada da cidade, para você chegar, descansar e seguir viagem revigorado.</p>
-    <div class="hero-actions">
-      <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20reserva%20no%20Kurten%20Hotelaria%20e%20Restaurante" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
-      <a class="btn btn-outline" href="#quartos">Ver quartos</a>
-      <a class="btn btn-outline" href="https://share.google/n80hoOpAXRV3vyM6F" target="_blank" rel="noopener">Como chegar</a>
+  <div class="hero-wheat-field" aria-hidden="true">
+    <svg viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
+    <svg viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
+    <svg viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
+    <svg viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
+  </div>
+  <div class="container">
+    <div class="hero-content">
+      <p class="eyebrow on-dark"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Hotel e Restaurante · Cândido de Abreu, PR</p>
+      <h1>Hospedagem e mesa farta na entrada da cidade.</h1>
+      <p>Quartos aconchegantes, restaurante próprio com bufê variado e atendimento de perto, do check-in ao check-out. O ponto certo para chegar, descansar e seguir viagem revigorado.</p>
+      <div class="hero-actions">
+        <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20gostaria%20de%20fazer%20uma%20reserva%20no%20Kurten%20Hotelaria%20e%20Restaurante" target="_blank" rel="noopener">Reservar pelo WhatsApp</a>
+        <a class="btn btn-outline" href="#quartos">Ver quartos</a>
+        <a class="btn btn-outline" href="https://www.google.com/maps/place/Hotel+Kurten+C%C3%A2ndido+de+Abreu/@-24.5885207,-51.3504592,17z" target="_blank" rel="noopener">Como chegar</a>
+      </div>
+      <div class="hero-strip">
+        <div><strong>Jardim Bela Vista</strong>Após o trevo, Estrada Palmital, s/n</div>
+        <div><strong>(43) 99958-8908</strong>Reservas e informações</div>
+        <div><strong>Hotel + Restaurante</strong>Tudo no mesmo endereço</div>
+      </div>
     </div>
-    <div class="hero-strip">
-      <div><strong>Jardim Bela Vista</strong>Após o trevo, Estrada Palmital, s/n</div>
-      <div><strong>(43) 99958-8908</strong>Reservas e informações</div>
-      <div><strong>Hotel + Restaurante</strong>Tudo no mesmo endereço</div>
+    <div class="hero-visual">
+      <div class="frame">
+        <img src="src/img/restaurante.jpg" alt="Salão do restaurante Kürten Hotelaria pronto para receber os hóspedes">
+        <span class="frame-tag">Restaurante próprio</span>
+        <span class="frame-stat"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Hotel + Restaurante</span>
+      </div>
     </div>
   </div>
   <div class="scroll-cue">Role para conhecer</div>
 </section>
 
-<!-- QUARTOS -->
 <section class="rooms" id="quartos">
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Acomodações</p>
       <h2>Escolha o quarto ideal para a sua parada</h2>
-      <p>Dois perfis de acomodação pensados para diferentes momentos de viagem — do check-in rápido de quem só precisa descansar até o quarto luxo para quem quer esticar a estadia com mais conforto.</p>
+      <p>Dois perfis de acomodação pensados para diferentes momentos de viagem, do check-in rápido de quem só precisa descansar até o quarto luxo para quem quer esticar a estadia com mais conforto.</p>
     </div>
 
     <div class="tier-grid">
@@ -652,7 +852,7 @@
       </article>
 
       <article class="tier-card luxo reveal">
-        <div class="tier-media"><img src="src/img/quarto7.jpeg" alt="Quarto Luxo do Kürten Hotelaria com ar-condicionado e TV"></div>
+        <div class="tier-media"><img src="src/img/quartosuite.jpeg" alt="Quarto Luxo do Kürten Hotelaria com ar-condicionado e TV"></div>
         <div class="tier-body">
           <p class="tier-kicker">Mais conforto e privacidade</p>
           <h3>Quarto Luxo</h3>
@@ -661,7 +861,7 @@
             <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Cama box de alta qualidade para uma noite revigorante</li>
             <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Ar-condicionado para o clima na medida certa</li>
             <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> TV para o seu lazer e descanso</li>
-            <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Banheiro privativo (suíte) dentro do próprio quarto</li>
+            <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Banheiro privativo, suíte dentro do próprio quarto</li>
           </ul>
           <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20tenho%20interesse%20no%20Quarto%20Luxo%20do%20Kurten%20Hotelaria" target="_blank" rel="noopener">Reservar este quarto</a>
         </div>
@@ -672,7 +872,7 @@
       <h3>Conheça os quartos por dentro</h3>
       <p class="eyebrow">Clique para ampliar</p>
     </div>
-    <div class="gallery reveal" id="gallery">
+    <div class="gallery reveal reveal-stagger" id="gallery">
       <button data-full="src/img/quarto1.jpeg"><img src="src/img/quarto1.jpeg" alt="Quarto com duas camas"><span class="cap">Quarto duplo</span></button>
       <button data-full="src/img/quarto2camas.jpeg"><img src="src/img/quarto2camas.jpeg" alt="Quarto com duas camas de solteiro"><span class="cap">Duas camas de solteiro</span></button>
       <button data-full="src/img/quarto3.jpeg"><img src="src/img/quarto3.jpeg" alt="Quarto duplo com TV"><span class="cap">Quarto duplo com TV</span></button>
@@ -689,13 +889,12 @@
   </div>
 </section>
 
-<!-- SOBRE -->
 <section class="about" id="sobre">
   <div class="container">
     <div class="about-copy reveal">
       <p class="eyebrow"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Quem somos</p>
       <h2 style="margin-top:12px; font-size:clamp(1.7rem,3.4vw,2.4rem);">Uma casa de hóspedes com jeito de cidade pequena</h2>
-      <p style="margin-top:20px;">O Kürten Restaurante e Hotelaria é referência em hospedagem em Cândido de Abreu — o tipo de lugar em que o hóspede é recebido de perto, sem burocracia, com a chave do quarto já separada antes mesmo de você chegar.</p>
+      <p style="margin-top:20px;">O Kürten Restaurante e Hotelaria é referência em hospedagem em Cândido de Abreu. O tipo de lugar em que o hóspede é recebido de perto, sem burocracia, com a chave do quarto já separada antes mesmo de você chegar.</p>
       <p>Estamos em ponto estratégico da cidade, perto do comércio, dos serviços e das principais vias de acesso: fácil de chegar depois da viagem, fácil de sair cedo no dia seguinte.</p>
       <ul class="about-features">
         <li><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Atendimento próximo e pessoal, do check-in ao check-out</li>
@@ -706,48 +905,57 @@
     </div>
     <div class="about-media reveal">
       <img src="src/img/candidodeabreucidade.jpg" alt="Vista da cidade de Cândido de Abreu, Paraná">
-      <div class="badge"><b>Cândido</b>de Abreu — PR</div>
+      <div class="badge"><b>Cândido</b>de Abreu, PR</div>
     </div>
   </div>
 </section>
 
-<!-- GASTRONOMIA -->
 <section class="gastronomy" id="restaurante">
   <div class="container">
-    <p class="eyebrow on-dark"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Restaurante Kürten</p>
-    <h2>Não é só um hotel. É onde conforto e boa mesa se encontram.</h2>
-    <p>O restaurante funciona dentro do próprio hotel, com bufê variado e aquele tempero de comida feita para nutrir de verdade — o tipo de refeição que rende conversa e faz repetir o prato.</p>
-    <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20restaurante%20do%20Kurten%20Hotelaria" target="_blank" rel="noopener">Falar sobre o restaurante</a>
+    <div class="gastronomy-copy reveal">
+      <p class="eyebrow on-dark"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Restaurante Kürten</p>
+      <h2>Não é só um hotel. É onde conforto e boa mesa se encontram.</h2>
+      <p>O restaurante funciona dentro do próprio hotel, com bufê variado e aquele tempero de comida feita para nutrir de verdade, o tipo de refeição que rende conversa e faz repetir o prato.</p>
+      <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20gostaria%20de%20saber%20mais%20sobre%20o%20restaurante%20do%20Kurten%20Hotelaria" target="_blank" rel="noopener">Falar sobre o restaurante</a>
+    </div>
+    <div class="gastronomy-media reveal">
+      <span class="tag">Bufê variado</span>
+      <div class="gastronomy-mosaic">
+        <button data-full="src/img/restaurante.jpg"><img src="src/img/restaurante.jpg" alt="Salão do restaurante Kürten Hotelaria"></button>
+        <button data-full="src/img/comidas1.jpg"><img src="src/img/comidas1.jpg" alt="Frutas e sobremesas do bufê do Kürten"></button>
+        <button data-full="src/img/comidas2.jpg"><img src="src/img/comidas2.jpg" alt="Mesa de café com pães e geleias do Kürten"></button>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- INSTALACOES -->
 <section class="facilities">
   <div class="container">
     <div class="section-head reveal">
       <p class="eyebrow"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Instalações</p>
       <h2>Ambientes pensados para o seu deslocamento tranquilo</h2>
-      <p>Corredores bem iluminados, portas de madeira maciça e banheiros organizados — os detalhes que fazem diferença entre uma estadia qualquer e uma estadia tranquila.</p>
+      <p>Corredores bem iluminados, portas de madeira maciça e banheiros organizados: os detalhes que fazem diferença entre uma estadia qualquer e uma estadia tranquila.</p>
     </div>
     <div class="facility-grid reveal">
-      <img src="src/img/corredorquartos.jpeg" alt="Corredor principal do hotel">
-      <img src="src/img/corredor.jpeg" alt="Corredor lateral do hotel">
-      <img src="src/img/banheiroquarto.jpeg" alt="Banheiro organizado do hotel">
+      <a href="#gallery"><img src="src/img/corredorquartos.jpeg" alt="Corredor principal do hotel"></a>
+      <a href="#gallery"><img src="src/img/corredor.jpeg" alt="Corredor lateral do hotel"></a>
+      <div class="facility-detail">
+        <img src="src/img/toalhashotel.jpeg" alt="Toalhas do hotel bordadas com a marca Kürten Hotelaria">
+        <span class="detail-caption">Enxoval com a nossa marca</span>
+      </div>
     </div>
   </div>
 </section>
 
-<!-- PARCERIAS -->
 <section class="partners" id="parcerias">
   <div class="container">
     <p class="eyebrow on-dark"><svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg> Para agências e operadoras</p>
     <h2>Parcerias com agências de viagem</h2>
-    <p>Oferecemos condições especiais para agências, operadoras e parceiros comerciais que buscam hospedagem de confiança para seus clientes em Cândido de Abreu — PR. Se você trabalha com turismo, temos tarifas diferenciadas e condições exclusivas para parceiros.</p>
+    <p>Oferecemos condições especiais para agências, operadoras e parceiros comerciais que buscam hospedagem de confiança para seus clientes em Cândido de Abreu, PR. Se você trabalha com turismo, temos tarifas diferenciadas e condições exclusivas para parceiros.</p>
     <a class="btn btn-gold" href="https://wa.me/5543999588908?text=Ol%C3%A1%2C%20estou%20vindo%20do%20site%20Kurten%20Hotelaria%20e%20Restaurante" target="_blank" rel="noopener">Quero ser parceiro</a>
   </div>
 </section>
 
-<!-- LOCALIZACAO -->
 <section class="location" id="localizacao">
   <div class="container">
     <div class="location-info reveal">
@@ -756,7 +964,7 @@
       <div class="info-card">
         <div class="info-row">
           <svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
-          <div><b>Endereço</b>Estrada Palmital, s/n — Jardim Bela Vista, Cândido de Abreu – PR, CEP 84470-000</div>
+          <div><b>Endereço</b>Estrada Palmital, s/n, Jardim Bela Vista, Cândido de Abreu, PR, CEP 84470-000</div>
         </div>
         <div class="info-row">
           <svg class="wheat" viewBox="0 0 24 40"><use href="#icon-wheat"/></svg>
@@ -768,17 +976,16 @@
         </div>
       </div>
       <div class="info-actions">
-        <a class="btn btn-gold" href="https://share.google/n80hoOpAXRV3vyM6F" target="_blank" rel="noopener">Como chegar</a>
+        <a class="btn btn-gold" href="https://www.google.com/maps/place/Hotel+Kurten+C%C3%A2ndido+de+Abreu/@-24.5885207,-51.3504592,17z" target="_blank" rel="noopener">Como chegar</a>
         <a class="btn btn-outline-dark" href="https://wa.me/5543999588908" target="_blank" rel="noopener">Chamar no WhatsApp</a>
       </div>
     </div>
     <div class="map-frame reveal">
-      <iframe src="https://maps.google.com/maps?q=Estrada%20Palmital%2C%20s%2Fn%2C%20Jardim%20Bela%20Vista%2C%20C%C3%A2ndido%20de%20Abreu%20-%20PR%2C%2084470-000&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa até o Kürten Hotelaria e Restaurante"></iframe>
+      <iframe src="https://maps.google.com/maps?q=-24.5885207,-51.3504592&z=17&output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa até o Kürten Hotelaria e Restaurante"></iframe>
     </div>
   </div>
 </section>
 
-<!-- RESERVA -->
 <section class="booking" id="reserva">
   <div class="container">
     <div class="section-head reveal">
@@ -848,7 +1055,6 @@
   </div>
 </section>
 
-<!-- FOOTER -->
 <footer class="site-footer">
   <div class="container">
     <div class="footer-top">
@@ -869,36 +1075,32 @@
       <div class="footer-col">
         <h4>Contato</h4>
         <ul>
-          <li>Estrada Palmital, s/n — Jardim Bela Vista</li>
-          <li>Cândido de Abreu – PR, CEP 84470-000</li>
+          <li>Estrada Palmital, s/n, Jardim Bela Vista</li>
+          <li>Cândido de Abreu, PR, CEP 84470-000</li>
           <li><a href="https://wa.me/5543999588908" target="_blank" rel="noopener">(43) 9 9958-8908</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
       <span>© <span id="year"></span> Kürten Restaurante e Hotelaria. Todos os direitos reservados.</span>
-      <span>Cândido de Abreu — Paraná</span>
+      <span>Cândido de Abreu, Paraná</span>
     </div>
   </div>
 </footer>
 
-<!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox">
   <button class="lightbox-close" id="lightboxClose" aria-label="Fechar">&times;</button>
   <img src="" alt="" id="lightboxImg">
 </div>
 
 <script>
-  // Year
   document.getElementById('year').textContent = new Date().getFullYear();
 
-  // Header scroll state
   const header = document.getElementById('siteHeader');
   const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 40);
   document.addEventListener('scroll', onScroll, {passive:true});
   onScroll();
 
-  // Mobile menu
   const navToggle = document.getElementById('navToggle');
   const mobileMenu = document.getElementById('mobileMenu');
   navToggle.addEventListener('click', () => {
@@ -913,7 +1115,6 @@
     document.body.style.overflow = '';
   }));
 
-  // Reveal on scroll
   const reveals = document.querySelectorAll('.reveal');
   if ('IntersectionObserver' in window){
     const io = new IntersectionObserver((entries) => {
@@ -924,22 +1125,24 @@
     reveals.forEach(el => el.classList.add('in'));
   }
 
-  // Lightbox
   const lightbox = document.getElementById('lightbox');
   const lightboxImg = document.getElementById('lightboxImg');
-  document.getElementById('gallery').addEventListener('click', (e) => {
+  document.addEventListener('click', (e) => {
     const btn = e.target.closest('button[data-full]');
     if(!btn) return;
     lightboxImg.src = btn.getAttribute('data-full');
     lightboxImg.alt = btn.querySelector('img').alt;
     lightbox.classList.add('open');
+    requestAnimationFrame(() => lightbox.classList.add('show'));
   });
-  const closeLightbox = () => lightbox.classList.remove('open');
+  const closeLightbox = () => {
+    lightbox.classList.remove('show');
+    setTimeout(() => lightbox.classList.remove('open'), 200);
+  };
   document.getElementById('lightboxClose').addEventListener('click', closeLightbox);
   lightbox.addEventListener('click', (e) => { if(e.target === lightbox) closeLightbox(); });
   document.addEventListener('keydown', (e) => { if(e.key === 'Escape') closeLightbox(); });
 
-  // Booking form -> WhatsApp
   const form = document.getElementById('bookingForm');
   form.addEventListener('submit', function(e){
     e.preventDefault();
